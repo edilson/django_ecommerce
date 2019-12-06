@@ -12,6 +12,9 @@ psycopg2 = "*"
 django = "*"
 python-decouple = "*"
 django-heroku = "*"
+django-log-request-id = "*"
+whitenoise = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.6"
