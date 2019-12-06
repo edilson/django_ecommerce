@@ -3,7 +3,7 @@ from decouple import Csv, config
 from dj_database_url import parse as db_url
 import django_heroku
 
-DEBUG = True
+DEBUG = False
 
 SECRET_KEY = config('SECRET_KEY')
 
