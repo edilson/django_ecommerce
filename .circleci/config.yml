@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/django_ecommerce
     docker:
-      - image: circleci/python:3.6-jessie
+      - image: circleci/python:3.6.9
         environment:
           PIPENV_IGNORE_VIRTUALENVS: True
           PIPENV_VENV_IN_PROJECT: True
@@ -47,6 +47,8 @@ jobs:
             ALLOWED_HOSTS: '.example.org'
             DATABASE_URL: 'sqlite:///'
   deploy:
+    docker:
+      - image: circleci/python:3.6.9
     steps:
       - checkout
       - run:
