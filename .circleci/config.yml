@@ -26,6 +26,8 @@ jobs:
       - run:
           command: cp django_ecommerce/settings/local.py.example django_ecommerce/settings/local.py
       - run:
+          command: cp django_ecommerce/settings/test.py.example django_ecommerce/settings/test.py
+      - run:
           command: cp .env.example .env
       - run:
           command: pipenv run python manage.py makemigrations
