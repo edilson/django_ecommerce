@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+model-mommy = "*"
 
 [packages]
 dj-database-url = "*"
@@ -15,6 +16,8 @@ django-heroku = "*"
 django-log-request-id = "*"
 whitenoise = "*"
 djangorestframework = "*"
+django-model-utils = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.6"

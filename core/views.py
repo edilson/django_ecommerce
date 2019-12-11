@@ -1,18 +1,9 @@
 from django.shortcuts import render
 
+from catalog.models import Category
+
 def index(request):
-    texts = ['Lorem ipsum dolor', 'sit amet consectetur']
-    context = {
-        'title': 'Django E-commerce',
-        'texts': texts
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
-def contato(request):
-    return render(request, 'contato.html')
-
-def produto(request):
-    return render(request, 'produto.html')
-
-def lista_produto(request):
-    return render(request, 'lista_produtos.html')
+def contact(request):
+    return render(request, 'contact.html')
