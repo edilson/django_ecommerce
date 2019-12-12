@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 model-mommy = "*"
+django-naomi = "*"
 
 [packages]
 dj-database-url = "*"
@@ -18,6 +19,7 @@ whitenoise = "*"
 djangorestframework = "*"
 django-model-utils = "*"
 ipython = "*"
+django-widget-tweaks = "*"
 
 [requires]
 python_version = "3.6"

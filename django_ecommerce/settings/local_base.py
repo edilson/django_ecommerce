@@ -14,6 +14,11 @@ DATABASES = {
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
+#E-mail
+INSTALLED_APPS += ('naomi',)
+EMAIL_BACKENDS = 'naomi.mail.backends.naomi.NaomiBackend'
+EMAIL_FILE_PATH = base_dir_join('tmp_email')
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
