@@ -23,10 +23,7 @@ class CategoryListView(generic.ListView):
         context['current_category'] = get_object_or_404(Category, slug=self.kwargs['slug'])
         return context
 
-def product(request, slug):
-    product = Product.objects.get(slug=slug)
-    context = {
-        'product': product
-    }
+class DetailProductView(generic.DetailView):
 
-    return render(request, 'catalog/product.html', context)
+    model = Product
+    template_name = 'catalog/product.html'
