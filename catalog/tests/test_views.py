@@ -9,7 +9,7 @@ class ProductListTestCase(TestCase):
     def setUp(self):
         self.url = reverse('catalog:product_list')
         self.client = Client()
-        self.products = mommy.make(Product, _quantity=3)
+        self.products = mommy.make(Product, _quantity=15)
         self.response = self.client.get(self.url)
 
     def tearDown(self):
@@ -22,4 +22,10 @@ class ProductListTestCase(TestCase):
     def test_context(self):
         self.assertTrue('product_list' in self.response.context)
         product_list = self.response.context['product_list']
-        self.assertEquals(product_list.count(), 3)
+        self.assertEquals(product_list.count(), 6)
+        paginator = self.response.context['paginator']
+        self.assertEqual(paginator.num_pages, 3)
+
+    def test_page_not_found(self):
+        response = self.client.get('{}?page=4'.format(self.url))
+        self.assertEqual(response.status_code, 404)

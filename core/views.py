@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
+from django.views.generic import TemplateView
 
 from catalog.models import Category
 from core.forms import ContactForm
 
-def index(request):
-    return render(request, 'index.html')
+class IndexView(TemplateView):
+
+    template_name = 'index.html'
 
 def contact(request):
     success = False
