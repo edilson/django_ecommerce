@@ -12,7 +12,7 @@ def pagination(request, paginator, page_obj):
     if 'page' in getvars:
         del getvars['page']
     if len(getvars) > 0:
-        context['getvars'] = '&{0}'.format(getvars.urlencode())
+        context['getvars'] = f'&{getvars.urlencode()}'
     else:
         context['getvars'] = ''
     return context
