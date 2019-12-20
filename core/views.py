@@ -26,9 +26,3 @@ def contact(request):
         'success': success
     }
     return render(request, 'contact.html', context)
-
-class SignupView(CreateView):
-    form_class = UserCreationForm
-    template_name = 'signup.html'
-    model = User
-    success_url = reverse_lazy('index')

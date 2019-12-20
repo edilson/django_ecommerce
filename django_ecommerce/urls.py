@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^contato/$', views.contact, name='contact'),
     url(r'^login/', LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^logout/', LogoutView.as_view(next_page='index'), name='logout'),
-    url(r'^cadastrar/', views.SignupView.as_view(), name='signup'),
     url(r'^catalogo/', include(('catalog.urls', 'catalog'), namespace='catalog')),
+    url(r'^conta/', include(('users.urls', 'accounts'), namespace='accounts')),
     url(r'^admin/', admin.site.urls),
 ]

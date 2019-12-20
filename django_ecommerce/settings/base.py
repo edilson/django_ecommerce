@@ -19,16 +19,19 @@ ADMINS = (
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
+AUTH_USER_MODEL = 'users.User'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'users.backends.ModelBackend'
+)
 
 HOST = config('HOST', default='http://127.0.0.1:8000')
-
-# AUTH_USER_MODEL = 'users.User'
 
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -38,6 +41,7 @@ INSTALLED_APPS = [
 
     'core',
     'catalog',
+    'users'
 ]
 
 MIDDLEWARE = [
