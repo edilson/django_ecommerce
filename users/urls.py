@@ -5,5 +5,6 @@ from . import views
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^alterar-usuario/$', views.UpdateUserView.as_view(), name='update-user'),
+    url(r'^alterar-senha/$', views.UpdatePasswordView.as_view(), name='update-password'),
     url(r'^cadastro/', views.SignupView.as_view(), name='signup')
 ]
