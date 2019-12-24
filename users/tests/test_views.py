@@ -36,7 +36,7 @@ class SignupViewTestCase(TestCase):
 class UpdateUserTestCase(TestCase):
     def setUp(self):
         self.client = Client()
-        self.url = reverse('accounts:update-user')
+        self.url = reverse('accounts:update_user')
         self.user = mommy.prepare(settings.AUTH_USER_MODEL)
         self.user.set_password('123')
         self.user.save()
@@ -65,7 +65,7 @@ class UpdateUserTestCase(TestCase):
 class UpdatePasswordTestCase(TestCase):
     def setUp(self):
         self.client = Client()
-        self.url = reverse('accounts:update-password')
+        self.url = reverse('accounts:update_password')
         self.user = mommy.prepare(settings.AUTH_USER_MODEL)
         self.user.set_password('123')
         self.user.save()
