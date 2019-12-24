@@ -84,3 +84,24 @@ class UpdatePasswordTestCase(TestCase):
         self.user.refresh_from_db()
         self.assertTrue(self.user.check_password('python1!'))
 
+    def test_update_password_with_old_password_incorrect(self):
+        data = {
+            'old_password': '1234',
+            'new_password1': 'pyth0n123',
+            'new_password2': 'pyth0n123',
+        }
+        self.client.login(username=self.user.username, password='123')
+        response = self.client.post(self.url, data)
+        self.user.refresh_from_db()
+        self.assertFormError(response, 'form', 'old_password', 'A senha antiga foi digitada incorretamente. Por favor, informe-a novamente.')
+
+    def test_update_password_with_new_password_not_matching_at_confirmation(self):
+        data = {
+            'old_password': '123',
+            'new_password1': 'pyth0n123',
+            'new_password2': 'python123',
+        }
+        self.client.login(username=self.user.username, password='123')
+        response = self.client.post(self.url, data)
+        self.user.refresh_from_db()
+        self.assertFormError(response, 'form', 'new_password2', 'The two password fields didn’t match.')
