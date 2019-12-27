@@ -2,6 +2,8 @@ import os
 
 from decouple import config
 
+from django.contrib.messages import constants as messages_constants
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def base_dir_join(*args):
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
 
     'core',
     'catalog',
+    'checkout',
     'users'
 ]
 
@@ -101,6 +104,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Messages
+MESSAGE_TAGS = {
+    messages_constants.DEBUG: 'debug',
+    messages_constants.INFO: 'info',
+    messages_constants.SUCCESS: 'success',
+    messages_constants.WARNING: 'warning',
+    messages_constants.ERROR: 'danger',
+}
 
 STATIC_URL = '/static/'
 
