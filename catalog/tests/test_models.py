@@ -14,6 +14,9 @@ class CategoryTestCase(TestCase):
             reverse('catalog:category', kwargs={'slug': self.category.slug})
         )
 
+    def test_ordering(self):
+        self.assertEqual(self.category._meta.ordering[0], 'name')
+
 class ProductTestCase(TestCase):
     def setUp(self):
         self.product = mommy.make(Product)
@@ -23,3 +26,6 @@ class ProductTestCase(TestCase):
             self.product.get_absolute_url(),
             reverse('catalog:product', kwargs={'slug': self.product.slug})
         )
+
+    def test_ordering(self):
+        self.assertEqual(self.product._meta.ordering[0], 'name')
