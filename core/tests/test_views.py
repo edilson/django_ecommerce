@@ -15,9 +15,6 @@ class IndexViewTest(TestCase):
         self.url = reverse('index')
         self.response = self.client.get(self.url)
 
-    def tearDown(self):
-        pass
-
     def test_status_code(self):
         self.assertEquals(self.response.status_code, 200)
 
@@ -41,6 +38,11 @@ class ContactViewTestCase(TestCase):
         self.assertFormError(response, 'form', 'name', 'Este campo é obrigatório.')
         self.assertFormError(response, 'form', 'message', 'Este campo é obrigatório.')
         self.assertFormError(response, 'form', 'email', 'Este campo é obrigatório.')
+
+    def test_form_with_invalid_email(self):
+        data = {'name': 'test', 'message': 'test', 'email': 'test-noise'}
+        response = self.client.post(self.url, data)
+        self.assertFormError(response, 'form', 'email', 'Informe um endereço de email válido.')
 
     def test_form_ok(self):
         data = {'name': 'test', 'message': 'test', 'email': 'test@test.com'}
