@@ -43,6 +43,7 @@
             {% else %}
               <li><a href="{% url 'login' %}">Minha Conta</a></li>
               <li><a href="{% url 'accounts:signup' %}">Cadastro</a></li>
+              <li><a href="{% url 'checkout:cart_item' %}">Carrinho</a></li>
             {% endif %}
           </ul>
         </div>
