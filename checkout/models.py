@@ -80,10 +80,10 @@ class OrderItem(models.Model):
     def __str__(self):
         return f'[{self.order}] {self.product}'
 
-def post_save_cat_item(instance, **kwargs):
+def post_save_cart_item(instance, **kwargs):
     if instance.quantity < 1:
         instance.delete()
 
 models.signals.post_save.connect(
-    post_save_cat_item, sender=CartItem, dispatch_uid='post_save_cart_item'
+    post_save_cart_item, sender=CartItem, dispatch_uid='post_save_cart_item'
 )
