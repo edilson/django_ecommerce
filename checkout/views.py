@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from catalog.models import Product
 
-from .models import CartItem
+from .models import CartItem, Order
 
 class CreateCartItemView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
