@@ -11,16 +11,19 @@
   <li class="active">Finalização de Compra</li>
 </ol>
 <div class="row">
-  <h1>Finalização da Compra</h1>
+  <h1>Escolha a forma de pagamento</h1>
 </div>
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="alert alert-success">
-      Seu pedido foi realizado com sucesso, para realizar o pagamento faça o depósito na seguinte conta:
-    </div>
+  <div class="col-md-12">
     <p>
-      {% lorem %}
+      Pedido #{{ order.pk }}
     </p>
+  </div>
+  <div class="col-md-4 col-md-offset-2">
+    <a href="#" class="btn btn-success">Pagar com Pagseguro</a>
+  </div>
+  <div class="col-md-4 col-md-offset-2">
+    <a href="#" class="btn btn-primary">Pagar com Paypal</a>
   </div>
 </div>
 {% endblock  %}

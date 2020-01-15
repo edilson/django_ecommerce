@@ -20,6 +20,7 @@ djangorestframework = "*"
 django-model-utils = "*"
 ipython = "*"
 django-widget-tweaks = "*"
+pagseguro = "*"
 
 [requires]
 python_version = "3.6"

@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+from catalog.models import Product
 from core.models import IndexedTimeStampedModel
 
 class CartItemManager(models.Manager):
@@ -66,6 +67,10 @@ class Order(IndexedTimeStampedModel):
 
     def __str__(self):
         return f'Pedido #{self.pk}'
+
+    def products(self):
+        products_ids = self.items.values_list('product')
+        return Product.objects.filter(pk__in=products_ids)
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name='Pedido', related_name='items', on_delete=models.CASCADE)

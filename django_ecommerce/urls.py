@@ -13,6 +13,6 @@ urlpatterns = [
     url(r'^logout/', LogoutView.as_view(next_page='index'), name='logout'),
     url(r'^catalogo/', include(('catalog.urls', 'catalog'), namespace='catalog')),
     url(r'^conta/', include(('users.urls', 'accounts'), namespace='accounts')),
-    url(r'^fechamento/', include(('checkout.urls', 'checkout'), namespace='checkout')),
+    url(r'^compras/', include(('checkout.urls', 'checkout'), namespace='checkout')),
     url(r'^admin/', admin.site.urls),
 ]
