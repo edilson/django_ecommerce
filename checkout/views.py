@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import RedirectView, TemplateView, ListView
+from django.views.generic import RedirectView, TemplateView, ListView, DetailView
 from django.forms import modelformset_factory
 from django.contrib import messages
 from django.urls import reverse
@@ -68,6 +68,12 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
 class OrderListView(LoginRequiredMixin, ListView):
     template_name = 'checkout/order_list.html'
     paginate_by = 6
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
+
+class OrderDetailView(LoginRequiredMixin, DetailView):
+    template_name = 'checkout/order_detail.html'
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
