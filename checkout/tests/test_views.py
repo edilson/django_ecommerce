@@ -4,7 +4,7 @@ from django.conf import settings
 
 from model_mommy import mommy
 
-from checkout.models import CartItem
+from checkout.models import CartItem, Order, OrderItem
 
 class CreateCartItemView(TestCase):
     def setUp(self):
@@ -46,4 +46,22 @@ class CheckoutViewTestCase(TestCase):
         self.cart_item.save()
         response_with_cart_id = self.client.get(self.checkout_url)
         self.assertTemplateUsed(response_with_cart_id, 'checkout/checkout.html')
+
+class OrderListViewTestCase(TestCase):
+    def setUp(self):
+        self.user = mommy.prepare(settings.AUTH_USER_MODEL)
+        self.user.set_password('123')
+        self.user.save()
+        self.order_items = mommy.make(OrderItem, _quantity=9)
+        self.orders = mommy.make(Order, _quantity=9)
+        self.client = Client()
+        self.url = reverse('checkout:order_list')
+        self.response = self.client.get(self.url)
+
+    def test_order_list_view(self):
+        redirect_url = f'{reverse(settings.LOGIN_URL)}?next={self.url}'
+        self.assertRedirects(self.response, redirect_url)
+        self.client.login(username=self.user.username, password='123')
+        response_logged_in = self.client.get(self.url)
+        self.assertTemplateUsed(response_logged_in, 'checkout/order_list.html')
 
