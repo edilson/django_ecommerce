@@ -61,9 +61,7 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
         else:
             messages.info(request, 'O carrinho está vazio.')
             return redirect('checkout:cart_item')
-        response = super(CheckoutView, self).get(request, *args, **kwargs)
-        response.context_data['order'] = order
-        return response
+        return super(CheckoutView, self).get(request, *args, **kwargs)
 
 class OrderListView(LoginRequiredMixin, ListView):
     template_name = 'checkout/order_list.html'
